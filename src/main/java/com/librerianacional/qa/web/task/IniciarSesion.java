@@ -1,5 +1,6 @@
 package com.librerianacional.qa.web.task;
 
+import com.librerianacional.qa.web.interactions.Esperas;
 import com.librerianacional.qa.web.models.DatosLogin;
 import com.librerianacional.qa.web.userinterfaces.PaginaInicial;
 import com.librerianacional.qa.web.userinterfaces.PaginaLogin;
@@ -30,6 +31,8 @@ public class IniciarSesion implements Task {
                 Click.on(BTN_INICIAR_SESION)
 
                 );
+
+        Esperas.dosSegunods();
 
     }
 

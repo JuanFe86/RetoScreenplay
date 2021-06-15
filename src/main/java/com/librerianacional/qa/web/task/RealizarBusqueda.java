@@ -1,5 +1,6 @@
 package com.librerianacional.qa.web.task;
 
+import com.librerianacional.qa.web.interactions.Esperas;
 import com.librerianacional.qa.web.userinterfaces.PaginaInicioUsuario;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -25,12 +26,12 @@ public class RealizarBusqueda implements Task {
 
         actor.attemptsTo(
                 Click.on(TXT_BUSQUEDA),
-                Enter.theValue(busqueda).into(TXT_BUSQUEDA),
-                Hit.the(Keys.ENTER).into(TXT_BUSQUEDA)
+                Enter.theValue(busqueda).into(TXT_BUSQUEDA).thenHit(Keys.ENTER)
+                //Hit.the(Keys.ENTER).into(TXT_BUSQUEDA)
 
         );
 
-
+        Esperas.dosSegunods();
 
     }
 

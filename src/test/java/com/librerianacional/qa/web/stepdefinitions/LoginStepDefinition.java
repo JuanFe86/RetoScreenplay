@@ -1,6 +1,7 @@
 package com.librerianacional.qa.web.stepdefinitions;
 
 import com.librerianacional.qa.web.interactions.CerrarAlerta;
+import com.librerianacional.qa.web.interactions.Esperas;
 import com.librerianacional.qa.web.interactions.MiCuenta;
 import com.librerianacional.qa.web.models.DatosLogin;
 import com.librerianacional.qa.web.questions.VerificarBusqueda;
@@ -46,20 +47,21 @@ public class LoginStepDefinition {
     }
 
     @Entonces("^ella puede ver el mensaje (.*)$")
-    public void ellaPuedeVerElMensajeHolaJuan(String resultado) throws InterruptedException {
-        Thread.sleep(2000);
+    public void ellaPuedeVerElMensajeHolaJuan(String resultado)  {
+
         juan.should(GivenWhenThen.seeThat(VerificarLogin.aPagina(resultado), Matchers.equalTo(resultado)));
     }
 
     @Cuando("^realiza busqueda por proyectos$")
     public void realizaBusquedaPorProyectos() {
+        juan.attemptsTo(Esperas.dosSegunods());
         juan.attemptsTo(RealizarBusqueda.EnBusqueda("proyectos"));
     }
 
 
     @Entonces("^el puede ver (.*)$")
-    public void elPuedeVerProyectos(String busqueda) throws InterruptedException {
-        Thread.sleep(2000);
+    public void elPuedeVerProyectos(String busqueda)  {
+        juan.attemptsTo(Esperas.dosSegunods());
         juan.should(GivenWhenThen.seeThat(VerificarBusqueda.aBusqueda(busqueda), Matchers.equalTo(busqueda)));
         juan.attemptsTo(CerrarSesion.eSesion());
     }
